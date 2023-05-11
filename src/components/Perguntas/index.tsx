@@ -44,8 +44,11 @@ const Perguntas = ({ pergunta, setPergunta, dispatch, questionario, setPagina }:
             >Anterior</button>
 
             <div className="question">
+                <p className="font-fix">
                 {perguntaAtual}.
-                {pergunta}</div>
+                {pergunta} 
+                </p>
+            </div>
             <div className="response-buttons">
                 <button className={
                     questionario[perguntaAtual] !== 1 ? 'response-btn' : 'response-btn-unselected'

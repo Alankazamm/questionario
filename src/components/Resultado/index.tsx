@@ -39,18 +39,18 @@ const Resultado = ({ questionario, setPagina, dispatch }: Props) => {
 	});
 
 	return (
-		<div className="question-section">
+		<div className="question-section ">
 			<div>
-				<h1>Resultado</h1>
+				<h1 className="font-fix">Resultado</h1>
 			</div>
 
 			{pontos <= 11 && (
-				<div className="result-section">
+				<div className="result-section font-fix">
                     <h2 className="underline"
                     >Seu resultado foi:
                         <span className="text-green-950 font-bold"> {pontos}</span>
                     </h2>
-					<p>
+					<p className="font-fix">
 						Você realmente tem que melhorar sua habilidade de gerenciar
 						conflitos. É possível que algumas vezes você não saiba que atitudes
 						adotar ou que direção seguir para chegar a um resultado final
