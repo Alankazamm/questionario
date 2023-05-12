@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import "./App.css";
 import Perguntas from "./components/Perguntas";
 import Inicio from "./components/Inicio";
@@ -48,6 +48,7 @@ export interface Questionario {
 
 
 const reducer = (state: Questionario, action: any) => {
+
   switch (action.type) {
     case 'resposta':
       return {
@@ -78,6 +79,9 @@ function App() {
   const [questionario, dispatch] = useReducer(reducer, questionarioInicial);
 	const [pergunta, setPergunta] = useState(listaPerguntas[1]);
   
+  useEffect(() => {
+    console.log(questionario);
+  }, [questionario]);
 	return (
     <div className="main">
       <div className="page">

@@ -11,8 +11,6 @@ type PerguntasProps = {
 }
 const Perguntas = ({ pergunta, setPergunta, dispatch, questionario, setPagina }: PerguntasProps) => {
    
-
-    const [resposta, setResposta] = useState<number>(0);
     const [perguntaAtual, setPerguntaAtual] = useState<number>(1);
  
     const proximaPergunta = () => {
@@ -30,7 +28,8 @@ const Perguntas = ({ pergunta, setPergunta, dispatch, questionario, setPagina }:
     const checaSeRespostaFoiDada = () => {
         questionario[perguntaAtual] === 0 ? alert('Selecione uma resposta') : proximaPergunta();
     }
-                    
+                
+    
         
     return (
         <div className="question-section">
@@ -53,7 +52,6 @@ const Perguntas = ({ pergunta, setPergunta, dispatch, questionario, setPagina }:
                 <button className={
                     questionario[perguntaAtual] !== 1 ? 'response-btn' : 'response-btn-unselected'
                 }onClick={() => {
-                    setResposta(1);
                     dispatch({ type: 'resposta', pergunta: pergunta, resposta: 2 });
                    proximaPergunta();
                 }}>{listaRespostas[2]}</button>
@@ -61,9 +59,9 @@ const Perguntas = ({ pergunta, setPergunta, dispatch, questionario, setPagina }:
                 <button className={
                     questionario[perguntaAtual] !== 2 ? 'response-btn' : 'response-btn-unselected'
                 } onClick={() => {
-                    setResposta(2);
                     dispatch({ type: 'resposta', pergunta: pergunta, resposta: 1 });
                     proximaPergunta();
+                    
                 }}>{listaRespostas[1]}</button>
             </div>
             {
@@ -77,10 +75,15 @@ const Perguntas = ({ pergunta, setPergunta, dispatch, questionario, setPagina }:
                 }}>Próxima</button>
 
             }
-            {perguntaAtual === 20 && <button
-                className="response-btn"
+            {perguntaAtual === 20 &&
+                 
+                <button
+                    className={questionario[perguntaAtual] !== 0 ? 'response-btn' : 'not-allowed'}
+                    disabled={questionario[perguntaAtual] === 0}
                 onClick={() => {
-                setPagina(3);
+                    setPagina(3);
+                    setPergunta(listaPerguntas[1]);
+                    
             }}>Finalizar</button>
             }
         </div>
